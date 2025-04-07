@@ -448,13 +448,16 @@ int main() {
 
                     char label[MAX_LEN], value[MAX_LEN];
                     fscanf(fp, "%s", label); // skip PASSWORD line
-                    fscanf(fp, "%s", value);
 
                     printf("\n--- Wallet Contents ---\n");
-
+                    int entryCount = 0;
                     while (fscanf(fp, "%[^:]:%s\n", label, value) != EOF) {
                         strcpy(value, decrypt(value, key_file));
                         printf("%s: %s\n", label, value);
+                        entryCount++;
+                        if (entryCount % 2 == 0) {
+                            printf("\n"); // add a newline for better readability
+                        }
                     }
 
                     fclose(fp);}
