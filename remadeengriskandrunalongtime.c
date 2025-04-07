@@ -458,7 +458,7 @@ int main() {
                     }
 
                     fclose(fp);}
-                else if(walletOption = 3){
+                else if(walletOption == 3){
                     update_credentials(filename);
 
                 } else if (walletOption == 4) {
